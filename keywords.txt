@@ -1,0 +1,22 @@
+#######################################
+# Syntax Coloring Map sparkey_gyro_i2c
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+TDAxis12    KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+init            KEYWORD2
+callibration    KEYWORD2
+read_x_axis     KEYWORD2
+read_y_axis     KEYWORD2
+read_z_axis     KEYWORD2
+read_all_axes   KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
