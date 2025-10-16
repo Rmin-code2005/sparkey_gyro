@@ -1,4 +1,4 @@
-# sparkey_gyro_i2c
+# sparkey_gyro
 
 An Arduino library for interfacing with the Sparkey 3-axis gyroscope sensor over the I2C bus.  
 This library provides an easy-to-use API to initialize the sensor, calibrate it, and read angular data from the X, Y, and Z axes.
@@ -11,9 +11,9 @@ This library provides an easy-to-use API to initialize the sensor, calibrate it,
 
 ## Example Usage
 ```cpp
-#include <sparkey_gyro_i2c.h>
-
-TDAxis12 gyro(0x68, 2); // I2C address and calibration pin
+#include <sparkey_gyro.h>
+TDAxis12 gyro(Serial1,9600,2);
+// TDAxis12 gyro(0x10, 8); //I2C address and calibration pin
 
 void setup() {
   Serial.begin(9600);

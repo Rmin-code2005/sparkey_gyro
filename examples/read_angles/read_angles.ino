@@ -1,5 +1,8 @@
-#include "sparkey_gyro_I2C.h"
-TDAxis12 gyro(0x10, 8); //I2C  ,  CAL/INT pin 
+#include "sparkey_gyro.h"
+#include <SoftwareSerial.h>
+SoftwareSerial mySerial(50, 51);  // RX, TX
+TDAxis12 gyro(mySerial,9600,2);
+// TDAxis12 gyro(0x10, 8); //I2C  ,  CAL/INT pin  for I2C
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -10,7 +13,7 @@ void loop() {
   gyro.read_all_axes();
   Serial.print("x:\t");
   Serial.print(gyro.x_angle);
-  Serial.print("/ty:\t");
+  Serial.print("\ty:\t");
   Serial.print(gyro.y_angle);
   Serial.print("z:\t");
   Serial.println(gyro.z_angle);
