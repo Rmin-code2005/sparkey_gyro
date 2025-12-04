@@ -4,7 +4,7 @@
 #include "Arduino.h"
 #include <Wire.h>
 #include <SoftwareSerial.h>
-
+//Armin Ghajari
 enum CommType {
     COMM_I2C,
     COMM_HARD_SERIAL,
