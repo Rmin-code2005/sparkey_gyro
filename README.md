@@ -5,9 +5,11 @@ This library provides an easy-to-use API to initialize the sensor, calibrate it,
 
 ## Features
 - Simple initialization with custom I2C address and calibration pin.
+- Simple initialization with custom UART buadrate and calibration pin.
 - Calibration function for accurate readings.
 - Read individual axes (X, Y, Z).
 - Read all axes at once.
+- Easy baudrate change with I2C protocol
 
 ## Example Usage
 ```cpp

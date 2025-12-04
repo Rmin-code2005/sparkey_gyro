@@ -1,0 +1,31 @@
+#######################################
+# Syntax Coloring Map for sparkey_gyro
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+TDAxis12        KEYWORD1
+CommType        KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+init                    KEYWORD2
+callibration            KEYWORD2
+read_x_axis             KEYWORD2
+read_y_axis             KEYWORD2
+read_z_axis             KEYWORD2
+read_all_axes           KEYWORD2
+
+WhatIsBuadrate          KEYWORD2
+change_buadrate         KEYWORD2
+change_baudrate_real    KEYWORD2
+check_connection        KEYWORD2
+
+#######################################
+# Constants / Enums (LITERAL1)
+#######################################
+COMM_I2C            LITERAL1
+COMM_HARD_SERIAL    LITERAL1
+COMM_SOFT_SERIAL    LITERAL1

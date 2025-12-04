@@ -23,7 +23,7 @@ private:
 public:
     float x_angle, y_angle, z_angle;
 
-    // ”«“‰œÂ »—«Ì I2C
+
     TDAxis12(uint8_t i2cadd, uint8_t callib_pin) {
         comm_type = COMM_I2C;
         I2C_Address = i2cadd;
@@ -33,7 +33,7 @@ public:
         baudRate = 0;
     }
 
-    // ”«“‰œÂ »—«Ì HardwareSerial
+
     TDAxis12(HardwareSerial& port, unsigned long baud, uint8_t callib_pin) {
         comm_type = COMM_HARD_SERIAL;
         h_serial_port = &port;
@@ -43,7 +43,7 @@ public:
         baudRate = baud;
     }
 
-    // ”«“‰œÂ »—«Ì SoftwareSerial
+
     TDAxis12(SoftwareSerial& port, unsigned long baud, uint8_t callib_pin) {
         comm_type = COMM_SOFT_SERIAL;
         s_serial_port = &port;
@@ -59,6 +59,10 @@ public:
     void read_y_axis();
     void read_z_axis();
     void read_all_axes();
+    void WhatIsBuadrate();
+    bool check_connection();
+    uint8_t change_baudrate(unsigned long baudrate);
+
 };
 
 #endif // sparkey_gyro_H
