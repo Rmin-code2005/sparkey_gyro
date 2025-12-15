@@ -23,7 +23,14 @@ private:
 public:
     float x_angle, y_angle, z_angle;
 
+//    float x_angle, y_angle, z_angle;
 
+    float acc_x, acc_y, acc_z;
+
+    float lin_acc_x, lin_acc_y, lin_acc_z;
+
+    void read_accelerometer();
+    void compute_linear_acceleration();
     TDAxis12(uint8_t i2cadd, uint8_t callib_pin) {
         comm_type = COMM_I2C;
         I2C_Address = i2cadd;

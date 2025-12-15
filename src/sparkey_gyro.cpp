@@ -314,4 +314,54 @@ bool TDAxis12::check_connection() {
 
     return 0;
 }
+void TDAxis12::read_accelerometer() {
 
+    if (comm_type != COMM_I2C) {
+        // Serial mode does not provide accel data
+        acc_x = acc_y = acc_z = 0;
+        return;
+    }
+
+    int16_t raw;
+
+    // X ACC
+    Wire.beginTransmission(I2C_Address);
+    Wire.write(0x14); // X_ACC_H
+    Wire.endTransmission(false);
+    Wire.requestFrom(I2C_Address, (uint8_t)2);
+    raw = (Wire.read() << 8) | Wire.read();
+    acc_x = raw * 9.81 / 16384.0;   // typical ±2g scaling
+
+    // Y ACC
+    Wire.beginTransmission(I2C_Address);
+    Wire.write(0x12); // Y_ACC_H
+    Wire.endTransmission(false);
+    Wire.requestFrom(I2C_Address, (uint8_t)2);
+    raw = (Wire.read() << 8) | Wire.read();
+    acc_y = raw * 9.81 / 16384.0;
+
+    // Z ACC
+    Wire.beginTransmission(I2C_Address);
+    Wire.write(0x10); // Z_ACC_H
+    Wire.endTransmission(false);
+    Wire.requestFrom(I2C_Address, (uint8_t)2);
+    raw = (Wire.read() << 8) | Wire.read();
+    acc_z = raw * 9.81 / 16384.0;
+}
+
+void TDAxis12::compute_linear_acceleration() {
+
+    // Convert angles to radians
+    float roll  = x_angle * DEG_TO_RAD;
+    float pitch = y_angle * DEG_TO_RAD;
+
+    // Gravity components in sensor frame
+    float g_x = -9.81 * sin(pitch);
+    float g_y =  9.81 * sin(roll) * cos(pitch);
+    float g_z =  9.81 * cos(roll) * cos(pitch);
+
+    // Subtract gravity
+    lin_acc_x = acc_x - g_x;
+    lin_acc_y = acc_y - g_y;
+    lin_acc_z = acc_z - g_z;
+}
